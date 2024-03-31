@@ -1,0 +1,171 @@
+***This is an execution log for docker-compose with the compose.yaml file
+
+root@ubuntu-focal:~/images# ls
+EntryCMD  composetest  nano
+root@ubuntu-focal:~/images# cd composetest/
+root@ubuntu-focal:~/images/composetest# ls -la
+total 28
+drwxr-xr-x 2 root root 4096 Mar 26 18:59 .
+drwxr-xr-x 5 root root 4096 Mar 26 18:48 ..
+-rw-r--r-- 1 root root  293 Mar 26 18:49 Dockerfile
+-rw-r--r-- 1 root root  514 Mar 26 18:48 app.py
+-rw-r--r-- 1 root root   96 Mar 26 18:49 compose.yaml
+-rw-r--r-- 1 root root   96 Mar 26 18:59 docker-compose.yaml
+-rw-r--r-- 1 root root   12 Mar 26 18:49 requirements.txt
+root@ubuntu-focal:~/images/composetest# rm docker-compose.yaml
+root@ubuntu-focal:~/images/composetest# docker-compose up
+[+] Running 9/9
+ ✔ redis Pulled                                                                  4.
+   ✔ 4abcf2066143 Pull complete                                                  0.
+   ✔ 5c3180d10209 Pull complete                                                  0.
+   ✔ f76326fd8e6b Pull complete                                                  0.
+   ✔ 034c076ba1e7 Pull complete                                                  1.
+   ✔ dffcad17539b Pull complete                                                  1.
+   ✔ 5913474e0f39 Pull complete                                                  1.
+   ✔ 4f4fb700ef54 Pull complete                                                  1.
+   ✔ cc6fccbbefa3 Pull complete                                                  1.
+[+] Building 19.7s (15/15) FINISHED                                    docker:defau
+ => [web internal] load build definition from Dockerfile                         0.
+ => => transferring dockerfile: 332B                                             0.
+ => [web] resolve image config for docker-image://docker.io/docker/dockerfile:1  1.
+ => [web auth] docker/dockerfile:pull token for registry-1.docker.io             0.
+ => [web] docker-image://docker.io/docker/dockerfile:1@sha256:ac85f380a63b13dfc  1.
+ => => resolve docker.io/docker/dockerfile:1@sha256:ac85f380a63b13dfcefa8904642  0.
+ => => sha256:ac85f380a63b13dfcefa89046420e1781752bab202122f8f5 8.40kB / 8.40kB  0.
+ => => sha256:657fcc512c7369f4cb3d94ea329150f8daf626bc838b1a1e81f18 482B / 482B  0.
+ => => sha256:a17ee7fff8f5e97b974f5b48f51647d2cf28d543f2aa6c11a 1.27kB / 1.27kB  0.
+ => => sha256:9d9c93f4b00be908ab694a4df732570bced3b8a96b7515d 11.80MB / 11.80MB  0.
+ => => extracting sha256:9d9c93f4b00be908ab694a4df732570bced3b8a96b7515d70ff934  0.
+ => [web internal] load metadata for docker.io/library/python:3.10-alpine        1.
+ => [web auth] library/python:pull token for registry-1.docker.io                0.
+ => [web internal] load .dockerignore                                            0.
+ => => transferring context: 2B                                                  0.
+ => [web 1/6] FROM docker.io/library/python:3.10-alpine@sha256:7edffe5acc6a2c4c  3.
+ => => resolve docker.io/library/python:3.10-alpine@sha256:7edffe5acc6a2c4c009f  0.
+ => => sha256:7edffe5acc6a2c4c009fece2fbdc85f04fde4c8481202473b 1.65kB / 1.65kB  0.
+ => => sha256:ca06126902de04f1f28a92e90227eba11049060fea33096c2 1.37kB / 1.37kB  0.
+ => => sha256:5b0b778f4eac00dbb1e5591fd3e0e2fd481fb63077c2e5676 6.27kB / 6.27kB  0.
+ => => sha256:c3cdf40b8bda8e4ca4be0f5fa7f1d128907271efcbc72 619.60kB / 619.60kB  0.
+ => => sha256:54daa9b7f407e5bf794de85d9b99daad40bda4cfdaf8b43 12.22MB / 12.22MB  0.
+ => => sha256:d9a4049063264f4c110051a04fb05d95d0c1fa6fd3d582a7f318a 240B / 240B  0.
+ => => extracting sha256:c3cdf40b8bda8e4ca4be0f5fa7f1d128907271efcbc72cbfc7c8b0  0.
+ => => sha256:d2b8bce6272d2f721d150caf8b2ef7235a3aed2626d1f80c7 3.08MB / 3.08MB  0.
+ => => extracting sha256:54daa9b7f407e5bf794de85d9b99daad40bda4cfdaf8b430a0ee62  1.
+ => => extracting sha256:d9a4049063264f4c110051a04fb05d95d0c1fa6fd3d582a7f318a0  0.
+ => => extracting sha256:d2b8bce6272d2f721d150caf8b2ef7235a3aed2626d1f80c7d800e  0.
+ => [web internal] load build context                                            0.
+ => => transferring context: 1.08kB                                              0.
+ => [web 2/6] WORKDIR /code                                                      0.
+ => [web 3/6] RUN apk add --no-cache gcc musl-dev linux-headers                  4.
+ => [web 4/6] COPY requirements.txt requirements.txt                             0.
+ => [web 5/6] RUN pip install -r requirements.txt                                4.
+ => [web 6/6] COPY . .                                                           0.
+ => [web] exporting to image                                                     1.
+ => => exporting layers                                                          1.
+ => => writing image sha256:205b0b718d699a3e8374d4eab29ee9d874e033baed8c4bb88fc  0.
+ => => naming to docker.io/library/composetest-web                               0.
+[+] Running 1/3
+ ✔ Network composetest_default    Created                                        0.
+ ⠹ Container composetest-redis-1  Created                                        0.
+ ⠹ Container composetest-web-1    Created                                        0.
+Attaching to redis-1, web-1
+redis-1  | 1:C 26 Mar 2024 19:06:22.977 # WARNING Memory overcommit must be enabledithout it, a background save or replication may fail under low memory condition. Be disabled, it can also cause failures without low memory condition, see https://git.com/jemalloc/jemalloc/issues/1328. To fix this issue add 'vm.overcommit_memory = 1o /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=for this to take effect.
+redis-1  | 1:C 26 Mar 2024 19:06:22.977 * oO0OoO0OoO0Oo Redis is starting oO0OoO0Ooo
+redis-1  | 1:C 26 Mar 2024 19:06:22.977 * Redis version=7.2.4, bits=64, commit=00000, modified=0, pid=1, just started
+redis-1  | 1:C 26 Mar 2024 19:06:22.977 # Warning: no config file specified, using  default config. In order to specify a config file use redis-server /path/to/redis.f
+redis-1  | 1:M 26 Mar 2024 19:06:22.981 * monotonic clock: POSIX clock_gettime
+redis-1  | 1:M 26 Mar 2024 19:06:22.983 * Running mode=standalone, port=6379.
+redis-1  | 1:M 26 Mar 2024 19:06:22.988 * Server initialized
+redis-1  | 1:M 26 Mar 2024 19:06:22.988 * Ready to accept connections tcp
+web-1    |  * Serving Flask app 'app.py'
+web-1    |  * Debug mode: on
+web-1    | WARNING: This is a development server. Do not use it in a production depment. Use a production WSGI server instead.
+web-1    |  * Running on all addresses (0.0.0.0)
+web-1    |  * Running on http://127.0.0.1:5000
+web-1    |  * Running on http://172.18.0.2:5000
+web-1    | Press CTRL+C to quit
+web-1    |  * Restarting with stat
+web-1    |  * Debugger is active!
+web-1    |  * Debugger PIN: 542-507-330
+
+
+
+
+  Gracefully stopping... (press Ctrl+C again to force)
+[+] Stopping 2/2
+ ✔ Container composetest-redis-1  Stopped                        1.6s
+ ✔ Container composetest-web-1    Stopped                        4.4s
+canceled
+root@ubuntu-focal:~/images/composetest#
+
+***
+root@ubuntu-focal:~/images/composetest# docker-compose down
+[+] Running 3/3
+ ✔ Container composetest-redis-1  Rem...                                 0.0s
+ ✔ Container composetest-web-1    Remov...                               0.0s
+ ✔ Network composetest_default    Remov...                               0.3s
+root@ubuntu-focal:~/images/composetest#
+
+
+
+*** docker push jwang1568cicd/nanoimg to Docker hub workspace jwang1568cicd respository nanoimg tag v2
+root@ubuntu-focal:~/images/nano# docker build -t jwang1568cicd/nanoimg:V2 .
+[+] Building 1.3s (11/11) FINISHED                             docker:default
+ => [internal] load build definition from Dockerfile                     0.0s
+ => => transferring dockerfile: 370B                                     0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:latest         1.0s
+ => [auth] library/ubuntu:pull token for registry-1.docker.io            0.0s
+ => [internal] load .dockerignore                                        0.0s
+ => => transferring context: 2B                                          0.0s
+ => [1/5] FROM docker.io/library/ubuntu:latest@sha256:77906da86b60585ce  0.0s
+ => [internal] load build context                                        0.0s
+ => => transferring context: 35B                                         0.0s
+ => CACHED [2/5] RUN apt update && apt install git -y                    0.0s
+ => CACHED [3/5] RUN apt install apache2 -y                              0.0s
+ => CACHED [4/5] WORKDIR /var/www/html                                   0.0s
+ => CACHED [5/5] ADD nano.tar.gz /var/www/html                           0.0s
+ => exporting to image                                                   0.0s
+ => => exporting layers                                                  0.0s
+ => => writing image sha256:2ca19506c19bae721eec55cb1ebf8f0da2ac55b423f  0.0s
+ => => naming to docker.io/jwang1568cicd/nanoimg:V2                      0.0s
+root@ubuntu-focal:~/images/nano# ls -la
+total 4712
+drwxr-xr-x 2 root root    4096 Mar 26 17:43 .
+drwxr-xr-x 5 root root    4096 Mar 26 18:48 ..
+-rw-r--r-- 1 root root     331 Mar 26 17:43 Dockerfile
+-rwxr-xr-x 1 root root 4809184 Mar 26 17:22 nano.tar.gz
+root@ubuntu-focal:~/images/nano# docker images
+REPOSITORY              TAG       IMAGE ID       CREATED        SIZE
+composetest-web         latest    205b0b718d69   9 hours ago    224MB
+jwang1568cicd/nanoimg   V2        2ca19506c19b   11 hours ago   266MB
+redis                   alpine    435993df2c8d   2 months ago   41MB
+root@ubuntu-focal:~/images/nano# docker log
+login   logout  logs
+root@ubuntu-focal:~/images/nano# docker log
+login   logout  logs
+root@ubuntu-focal:~/images/nano# docker logs
+"docker logs" requires exactly 1 argument.
+See 'docker logs --help'.
+
+Usage:  docker logs [OPTIONS] CONTAINER
+
+Fetch the logs of a container
+root@ubuntu-focal:~/images/nano# docker login
+Authenticating with existing credentials...
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+root@ubuntu-focal:~/images/nano#
+root@ubuntu-focal:~/images/nano#
+root@ubuntu-focal:~/images/nano#
+root@ubuntu-focal:~/images/nano# docker push jwang1568cicd/nanoimg:V2
+The push refers to repository [docker.io/jwang1568cicd/nanoimg]
+da8139121d35: Pushed
+5f70bf18a086: Mounted from library/redis
+d4bc2b4318cd: Pushed
+608f5ceacda0: Pushed
+5498e8c22f69: Pushed
+V2: digest: sha256:8748942a0b14249b6fd33d5158f8b821b11934d5f4851eabcbfc8b9094de283f size: 1370
+root@ubuntu-focal:~/images/nano#

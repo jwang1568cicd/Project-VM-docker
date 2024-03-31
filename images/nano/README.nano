@@ -1,0 +1,71 @@
+***This project is based on docker container with ubuntu base image + web server sample from https://www.tooplate.com/zip-templates/2122_nano_folio.zip. 
+
+
+
+Where are Docker Images Stored? Docker Container Paths Explained
+https://www.freecodecamp.org/news/where-are-docker-images-stored-docker-container-paths-explained/
+
+
+https://www.tooplate.com/view/2122-nano-folio
+curl https://www.tooplate.com/zip-templates/2122_nano_folio.zip --output nano_folio.zip
+tar czvf nano.tar.gz *
+
+vi Dockerfile...
+===***
+FROM ubuntu:latest
+LABEL "Author"="Satya"
+LABEL "Project"="nano"
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt update && apt install git -y
+RUN apt install apache2 -y
+CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+EXPOSE 80
+WORKDIR /var/www/html
+VOLUME /var/log/apache2
+ADD nano.tar.gz /var/www/html
+#COPY nano.tar.gz /var/www/html
+===***
+FROM ubuntu:latest
+LABEL "Author"="Satya"
+LABEL "Project"="nano"
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt update && apt install git -y
+RUN apt install apache2 -y
+CMD ["/usr/sbin/apache2ctl", "-D", "FORGROUND"]
+EXPOSE 80
+WORKDIR /var/www/html
+VOLUME /var/log/apache2
+ADD nano.tar.gz /var/www/html
+#COPY nano.tar.gz /var/www/html
+
+docker build -t nanoimg .
+
+<fix the Dockerfile and rebuilt >
+
+docker build -t nanoimg:V2 .
+
+docker run -d --name nanowebsite -p 9080:80 onjerryaws/nanoimg:V2
+docker run -d --name nanowebsite -p 9080:80 jwang1568cicd/nanoimg:V2
+
+docker push jwang1568cicd/nanoimg:V2
+dokcer stop xxxx
+docker rm xxxx
+docker rimi ...images to be deleted...
+
+
+*** working sample
+   79  docker ps -a
+   80  vi Dockerfile
+   81  docker build -t nanoimg:V2 .
+   82  docker images
+   83  docker run -d --name nanowebsite -p 9080:80 nanoimg:V2
+   84  docker ps -a
+   85  docker rm nanowebsite
+   86  docker ps -a
+   87  docker ps
+   88  docker run -d --name nanowebsite -p 9080:80 nanoimg:V2
+   89  docker ps
+   90  history
+root@ubuntu-focal:~/images/nano#
+
+
